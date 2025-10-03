@@ -65,7 +65,7 @@ Contributions are welcome!
 - Submit a **pull request** for adding strategy papers, frameworks, or project ideas  
 - Join discussions on governance, ethics, and international cooperation in AI  
 
-Please see [Contribution Guidelines](CONTRIBUTING.md)  
+Please see [Contribution Guidelines](CONTRIBUTING.md) . 
 
 ---
 
