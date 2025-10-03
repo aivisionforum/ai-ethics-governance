@@ -49,7 +49,16 @@ The working group adheres to the **open source spirit**: transparency, collabora
 - **Scanning & Sharing**: Tracking and discussing the latest global news, reports, and challenges in AI ethics and governance  
 
 ---
+## 📌 Planned Deliverables
+The working group aims to produce the following outputs:  
+- **White Papers & Strategy Reports**: Policy-oriented research papers on AI ethics and governance  
+- **Framework Drafts**: Proposals for risk-based governance, AI safety practices, and maturity models  
+- **Standards Contributions**: Input into international standards and best practices for responsible AI  
+- **Open Source Resources**: Tools, datasets, or licensing models to support transparency and reproducibility  
+- **News Scans & Briefings**: Regular updates summarizing recent developments in AI ethics and governance  
+- **Community Projects**: Incubated initiatives that implement identified strategic opportunities  
 
+---
 ## 🤝 How to Contribute
 Contributions are welcome!  
 - Open an **issue** to suggest topics, share resources, or highlight news  
