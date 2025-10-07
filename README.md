@@ -3,7 +3,7 @@
 
 ---
 
-## 🌍 About This Repository
+## About This Repository
 This repository hosts the activities and outputs of the **AI Ethics and Governance Working Group**.  
 The group focuses on exploring the **ethical dilemmas and governance challenges of AI systems**, and aims to identify and advance strategic opportunities through international cooperation.  
 
@@ -11,7 +11,7 @@ The working group adheres to the **open source spirit**: transparency, collabora
 
 ---
 
-## ⚖️ Key Focus Areas
+## Key Focus Areas
 - **Ethical Dilemmas in AI**  
   - Fairness vs. accuracy  
   - Transparency vs. privacy  
@@ -42,14 +42,14 @@ The working group adheres to the **open source spirit**: transparency, collabora
 
 ---
 
-## 📰 Community Activities
+## Community Activities
 - **Strategy & Research**: Developing frameworks, standards, and publications  
 - **Collaboration**: Working with open source communities and international partners  
 - **Incubation**: Exploring and launching new projects that implement strategic opportunities  
 - **Scanning & Sharing**: Tracking and discussing the latest global news, reports, and challenges in AI ethics and governance  
 
 ---
-## 📌 Planned Deliverables
+## Planned Deliverables
 The working group aims to produce the following outputs:  
 - **White Papers & Strategy Reports**: Policy-oriented research papers on AI ethics and governance  
 - **Framework Drafts**: Proposals for risk-based governance, AI safety practices, and maturity models  
@@ -59,17 +59,15 @@ The working group aims to produce the following outputs:
 - **Community Projects**: Incubated initiatives that implement identified strategic opportunities  
 
 ---
-## 🤝 How to Contribute
-Contributions are welcome!  
+## How to Contribute
+Contributions are welcome! See [Contribution Guidelines](CONTRIBUTING.md) for details.
 - Open an **issue** to suggest topics, share resources, or highlight news  
 - Submit a **pull request** for adding strategy papers, frameworks, or project ideas  
-- Join discussions on governance, ethics, and international cooperation in AI  
-
-Please see [Contribution Guidelines](CONTRIBUTING.md) . 
+- **[Join our mailing list](https://aivisionforum.groups.io/g/ai-ethics-governance)** for announcements, meetings, and discussions 
 
 ---
 
-## 📜 License
+## License
 All text and documents in this repository are licensed under the **[CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/)**.  
 This ensures the work can be shared and adapted freely, with proper attribution.  
 
