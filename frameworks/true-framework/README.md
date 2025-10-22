@@ -1,6 +1,6 @@
 # TRUE Framework Specification
 
-This directory vendors the TRUE (Transparent, Reproducible, Understandable, Executable) framework specification for use by the AI Ethics Governance working group.
+This directory contains the TRUE (Transparent, Reproducible, Understandable, Executable) framework specification for use by the AI Ethics Governance working group.
 
 ## Contents
 - `spec/` – upstream specification Markdown files, preserved verbatim.
