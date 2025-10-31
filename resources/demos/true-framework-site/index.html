@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRUE Framework v1.0 - LLM Openness Evaluator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loader" class="loader-container">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-text">TRUE Framework</div>
+        </div>
+    </div>
+    <div id="app" style="opacity: 0;">
+        <header>
+            <div class="header-content">
+                <div class="title-container">
+                    <h1 class="main-title" onclick="window.location.reload();" style="cursor: pointer;" title="Click to return home">
+                        <span class="title-icon">🔍</span>
+                        <span class="title-text">
+                            <span class="gradient-text">TRUE</span>
+                            <span class="title-framework">Framework</span>
+                        </span>
+                        <span class="title-version">v1.0</span>
+                    </h1>
+                    <div class="subtitle-container">
+                        <p class="subtitle">
+                            <span class="subtitle-word" data-letter="T">Transparent</span>
+                            <span class="subtitle-separator">•</span>
+                            <span class="subtitle-word" data-letter="R">Reproducible</span>
+                            <span class="subtitle-separator">•</span>
+                            <span class="subtitle-word" data-letter="U">Understandable</span>
+                            <span class="subtitle-separator">•</span>
+                            <span class="subtitle-word" data-letter="E">Executable</span>
+                        </p>
+                    </div>
+                    <p class="tagline">
+                        <span class="tagline-emoji">✅</span>
+                        Evaluate the openness and reproducibility of open LLMs
+                        <span class="tagline-emoji">📊</span>
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="evaluation-section">
+                <h2>Start New Evaluation</h2>
+                
+                <div class="model-selector">
+                    <div id="custom-model" class="model-input">
+                        <p style="color: #64748b; margin-bottom: 1rem;">
+                            💡 <strong>Tip:</strong> Enter a URL or click on the input field to see popular model suggestions. Click "Auto-Analyze & Start Evaluation" to begin.
+                        </p>
+                        <div class="url-input-container">
+                            <input type="url" id="model-url" placeholder="https://github.com/owner/model-repo or https://huggingface.co/model">
+                            <div id="url-suggestions" class="url-suggestions">
+                                <div class="suggestions-header">
+                                    <strong>Popular Models (<span id="suggestions-count">0</span>) - Click to Select:</strong>
+                                    <button id="refresh-suggestions" class="refresh-btn" title="Fetch latest trending models">
+                                        🔄 Refresh
+                                    </button>
+                                    <div id="suggestions-status" class="suggestions-status"></div>
+                                </div>
+                                <div id="suggestions-content">
+                                <div class="suggestions-section">
+                                    <div class="section-title">🔥 Trending on HuggingFace</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/meta-llama/Llama-3.2-3B">Meta Llama 3.2 (3B)</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/google/gemma-2-9b">Google Gemma 2 (9B)</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/Qwen/Qwen2.5-72B">Qwen 2.5 (72B)</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/microsoft/Phi-3.5-mini-instruct">Microsoft Phi-3.5 Mini</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/deepseek-ai/DeepSeek-V2.5">DeepSeek V2.5</div>
+                                </div>
+                                <div class="suggestions-section">
+                                    <div class="section-title">💻 Code Models</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/Qwen/Qwen2.5-Coder-32B">Qwen 2.5 Coder (32B)</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/deepseek-ai/deepseek-coder-v2-lite">DeepSeek Coder V2</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/meta-llama/CodeLlama-70b">Code Llama (70B)</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/codellama/CodeLlama-34b-Python">Code Llama Python</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/WizardLM/WizardCoder-Python-34B">WizardCoder Python</div>
+                                </div>
+                                <div class="suggestions-section">
+                                    <div class="section-title">🌟 Community Favorites</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/NousResearch/Hermes-3-Llama-3.1-8B">Nous Hermes 3</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/mistralai/Mixtral-8x7B-v0.1">Mixtral 8x7B</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/01-ai/Yi-1.5-34B">Yi 1.5 (34B)</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/BAAI/Aquila2-34B">Aquila 2 (34B)</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/internlm/internlm2_5-20b">InternLM 2.5 (20B)</div>
+                                </div>
+                                <div class="suggestions-section">
+                                    <div class="section-title">🔬 Research Models</div>
+                                    <div class="suggestion-item" data-url="https://github.com/stanford-crfm/alpaca">Stanford Alpaca</div>
+                                    <div class="suggestion-item" data-url="https://github.com/databrickslabs/dolly">Databricks Dolly</div>
+                                    <div class="suggestion-item" data-url="https://github.com/LAION-AI/Open-Assistant">Open Assistant</div>
+                                    <div class="suggestion-item" data-url="https://github.com/togethercomputer/RedPajama-Data">RedPajama</div>
+                                    <div class="suggestion-item" data-url="https://github.com/openlm-research/open_llama">OpenLLaMA</div>
+                                </div>
+                                <div class="suggestions-section">
+                                    <div class="section-title">🏢 Enterprise Models</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/Salesforce/xgen-7b-8k-base">Salesforce XGen</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/amazon/MistralLite">Amazon MistralLite</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B">NVIDIA Nemotron</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/alibaba-nlp/gte-Qwen2-7B">Alibaba GTE-Qwen2</div>
+                                    <div class="suggestion-item" data-url="https://huggingface.co/THUDM/glm-4-9b">GLM-4 (9B)</div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="auto-analyze" class="primary-btn">🔍 Auto-Analyze & Start Evaluation</button>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="scoring-section" style="display:none;">
+                <h2>Evaluation: <span id="eval-model-name"></span><input id="eval-model-name-input" type="text" style="display: none; font-size: inherit; font-weight: inherit; border: none; border-bottom: 2px solid var(--primary-color); background: transparent; padding: 0.25rem;"></h2>
+                <div id="eval-model-url-wrapper" style="display: none; margin-bottom: 1rem;">
+                    <label style="font-weight: bold;">Model URL:</label>
+                    <input id="eval-model-url-input" type="text" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border: 1px solid var(--border); border-radius: 6px;">
+                </div>
+                
+                <div class="scoring-container">
+                    <div class="dimension" data-dimension="transparent">
+                        <h3>1. Transparent (Max 10 pts)</h3>
+                        <p class="dimension-desc">Critical components openly disclosed</p>
+                        <div class="criteria-list">
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="license">
+                                    <span>Open license (MIT/Apache) - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="weights">
+                                    <span>Model weights available - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="inference">
+                                    <span>Inference code public - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="training">
+                                    <span>Training code available - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="datasets">
+                                    <span>Dataset disclosed - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dimension-score">Score: <span class="score">0</span>/10</div>
+                    </div>
+
+                    <div class="dimension" data-dimension="reproducible">
+                        <h3>2. Reproducible (Max 10 pts)</h3>
+                        <p class="dimension-desc">Feasibility to retrain the model</p>
+                        <div class="criteria-list">
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="hardware">
+                                    <span>Hardware/setup disclosed - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="pipeline">
+                                    <span>Training pipeline + configs - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="checkpoints">
+                                    <span>Intermediate checkpoints/logs - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="cost">
+                                    <span>Cost/time disclosed - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="community">
+                                    <span>Community-verified replication - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dimension-score">Score: <span class="score">0</span>/10</div>
+                    </div>
+
+                    <div class="dimension" data-dimension="understandable">
+                        <h3>3. Understandable (Max 6 pts)</h3>
+                        <p class="dimension-desc">Well-documented for understanding</p>
+                        <div class="criteria-list">
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="modelcard">
+                                    <span>Model card & usage docs - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="architecture">
+                                    <span>Architecture design explained - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="provenance">
+                                    <span>Dataset provenance documented - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dimension-score">Score: <span class="score">0</span>/6</div>
+                    </div>
+
+                    <div class="dimension" data-dimension="executable">
+                        <h3>4. Executable (Max 4 pts)</h3>
+                        <p class="dimension-desc">Can run or fine-tune locally</p>
+                        <div class="criteria-list">
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="runnable">
+                                    <span>Inference locally runnable - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                            <div class="criterion">
+                                <label>
+                                    <input type="checkbox" data-points="2" data-criterion="finetune">
+                                    <span>Fine-tuning pipeline runnable - 2pts</span>
+                                </label>
+                                <div class="evidence-wrapper">
+                                    <input type="text" class="evidence" placeholder="Evidence/URL">
+                                    <a class="evidence-link" href="#" target="_blank" style="display: none;" title="Open URL">🔗</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dimension-score">Score: <span class="score">0</span>/4</div>
+                    </div>
+                </div>
+
+                <div class="total-score">
+                    <h3>Total Score: <span id="total-score">0</span>/30</h3>
+                    <div class="tier-badge" id="tier-badge">
+                        <span class="tier-name">Bronze</span>
+                        <span class="tier-desc">Minimal openness</span>
+                    </div>
+                </div>
+
+                <div class="evaluation-notes">
+                    <label for="notes">Evaluation Notes:</label>
+                    <textarea id="notes" rows="4" placeholder="Add any additional context or justification for the scores..."></textarea>
+                </div>
+
+                <div class="action-buttons" id="action-buttons-normal">
+                    <button id="new-evaluation" class="secondary-btn" title="Close current evaluation and start fresh">🔄 Close / Start New</button>
+                    <button id="export-evaluation" class="secondary-btn">📥 Export JSON</button>
+                </div>
+                <div class="action-buttons" id="action-buttons-modified" style="display: none;">
+                    <button id="scoring-save-btn" onclick="app.saveScoringChanges()" style="padding: 0.75rem 1.5rem; background: #10b981; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">💾 Save Changes</button>
+                    <button id="scoring-cancel-btn" onclick="app.cancelScoringChanges()" style="padding: 0.75rem 1.5rem; background: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">❌ Cancel</button>
+                </div>
+            </section>
+
+            <section id="leaderboard-section">
+                <h2>Evaluation Leaderboard</h2>
+                <div class="filters">
+                    <select id="tier-filter">
+                        <option value="all">All Tiers</option>
+                        <option value="platinum">Platinum (28-30)</option>
+                        <option value="gold">Gold (21-27)</option>
+                        <option value="silver">Silver (11-20)</option>
+                        <option value="bronze">Bronze (0-10)</option>
+                    </select>
+                    <input type="search" id="search-filter" placeholder="Search models...">
+                    <div style="display: inline-flex; align-items: center; margin-left: 1rem; background: var(--surface); padding: 0.25rem; border-radius: 6px;">
+                        <label style="display: flex; align-items: center; padding: 0.25rem 0.75rem; cursor: pointer;">
+                            <input type="radio" name="eval-view" id="current-run-view" value="current" checked style="margin-right: 0.5rem;">
+                            <span style="font-size: 0.9rem;">Current Run</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 0.25rem 0.75rem; cursor: pointer;">
+                            <input type="radio" name="eval-view" id="historic-view" value="historic" style="margin-right: 0.5rem;">
+                            <span style="font-size: 0.9rem;">Historic Total</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div id="leaderboard-container" class="leaderboard-wrapper">
+                    <table id="leaderboard">
+                        <thead>
+                            <tr>
+                                <th data-sort="rank" class="sortable" onclick="app.handleSort('rank')" title="Ranking position based on total score">Rank <span class="sort-icon"></span></th>
+                                <th data-sort="modelName" class="sortable" onclick="app.handleSort('modelName')" title="Name of the LLM model">Model <span class="sort-icon"></span></th>
+                                <th data-sort="evalCount" class="sortable" onclick="app.handleSort('evalCount')" title="Number of evaluations performed for this model">Evals <span class="sort-icon"></span></th>
+                                <th data-sort="totalScore" class="sortable" onclick="app.handleSort('totalScore')" title="Total score out of 30 points">Score <span class="sort-icon"></span></th>
+                                <th data-sort="tier" class="sortable" onclick="app.handleSort('tier')" title="Classification tier: Platinum (28-30), Gold (21-27), Silver (11-20), Bronze (0-10)">Tier <span class="sort-icon"></span></th>
+                                <th data-sort="transparent" class="sortable" onclick="app.handleSort('transparent')" title="Transparent (max 10pts): Model components openly disclosed - license, weights, code, datasets">T <span class="sort-icon"></span></th>
+                                <th data-sort="reproducible" class="sortable" onclick="app.handleSort('reproducible')" title="Reproducible (max 10pts): Feasibility to retrain the model - hardware specs, pipeline, checkpoints, costs">R <span class="sort-icon"></span></th>
+                                <th data-sort="understandable" class="sortable" onclick="app.handleSort('understandable')" title="Understandable (max 6pts): Well-documented - model card, architecture details, data provenance">U <span class="sort-icon"></span></th>
+                                <th data-sort="executable" class="sortable" onclick="app.handleSort('executable')" title="Executable (max 4pts): Can run or fine-tune locally on consumer hardware">E <span class="sort-icon"></span></th>
+                                <th data-sort="date" class="sortable" onclick="app.handleSort('date')" title="Date when the evaluation was performed">Date <span class="sort-icon"></span></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="leaderboard-body-container">
+                        <table id="leaderboard-body-table">
+                            <tbody id="leaderboard-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="persistence-info">
+                <h3>Data Persistence</h3>
+                <div class="persistence-options">
+                    <div class="option">
+                        <h4>Export/Import</h4>
+                        <p>Backup and restore your evaluations</p>
+                        <button id="export-all">Export All</button>
+                        <button id="import-data">Import</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Tier Information Section -->
+        <section id="tier-info-section">
+            <h3>🏆 TRUE Framework Tier Classification</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Models are classified into four tiers based on their total TRUE Framework score (maximum 30 points):</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+                <div style="text-align: center;">
+                    <div class="tier-badge platinum">
+                        <span class="tier-name">Platinum</span>
+                        <span class="tier-desc">Fully open and reproducible</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem; font-weight: 600;">28-30 points</p>
+                </div>
+                <div style="text-align: center;">
+                    <div class="tier-badge gold">
+                        <span class="tier-name">Gold</span>
+                        <span class="tier-desc">Strong openness, minor gaps</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem; font-weight: 600;">21-27 points</p>
+                </div>
+                <div style="text-align: center;">
+                    <div class="tier-badge silver">
+                        <span class="tier-name">Silver</span>
+                        <span class="tier-desc">Some transparency, low reproducibility</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem; font-weight: 600;">11-20 points</p>
+                </div>
+                <div style="text-align: center;">
+                    <div class="tier-badge bronze">
+                        <span class="tier-name">Bronze</span>
+                        <span class="tier-desc">Minimal openness</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem; font-weight: 600;">0-10 points</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer Section -->
+        <section id="disclaimer-section" class="disclaimer-notice">
+            <div class="disclaimer-content">
+                <h4>⚠️ Important Notice</h4>
+                <p>
+                    <strong>Accuracy Disclaimer:</strong> The TRUE Framework scores are based on publicly available information and may not reflect the complete picture of a model's openness.
+                    Scores generated by this tool should be considered preliminary assessments.
+                </p>
+                <p>
+                    <strong>Verification Required:</strong> Please independently verify all evidence links and information before making decisions based on these evaluations.
+                    Model documentation and availability may change over time.
+                </p>
+                <p>
+                    <strong>Use Case:</strong> This tool is intended for educational and research purposes to promote transparency in AI development.
+                    For critical decisions, conduct thorough independent research.
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <p>TRUE Framework v1.0 - Evaluating LLM Openness & Reproducibility</p>
+            <p><a href="https://github.com/csheargm/true_framework" target="_blank">GitHub</a> | <a href="https://github.com/csheargm/true_framework" target="_blank" id="about-link">About</a></p>
+        </footer>
+    </div>
+
+    <!-- Modal for viewing evaluation details -->
+    <div id="evaluation-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Hover tooltip for preview -->
+    <div id="hover-tooltip" class="hover-tooltip"></div>
+
+    <script src="model-evaluations.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="clear-test-data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Fallback to show app if loader gets stuck
+        setTimeout(function() {
+            const loader = document.getElementById('loader');
+            const app = document.getElementById('app');
+            if (loader && loader.style.display !== 'none') {
+                console.warn('Loader timeout - forcing app display');
+                loader.style.display = 'none';
+                if (app) {
+                    app.style.opacity = '1';
+                }
+                // Try to initialize app if not already done
+                if (!window.app) {
+                    try {
+                        window.app = new TRUEFramework();
+                    } catch(e) {
+                        console.error('Failed to initialize app:', e);
+                    }
+                }
+            }
+        }, 5000); // 5 second maximum wait
+    </script>
+</body>
+</html>
