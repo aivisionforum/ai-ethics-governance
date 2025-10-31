@@ -1,6 +1,6 @@
 # Global Open Responsible AI Landscape
 
-![AI Ethics Mind Map](Mind%20Map.png) 
+![AI Ethics Mind Map](Mind_Map.png) 
 | Organization / Project / Foundation                                                                                           | Focus Area(s)                                 | Assessment of Opportunities / Gaps                                                                                                                                                                             |
 |:------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [AI Now Institute](https://ainowinstitute.org)                                                                                | Policy, Societal Impact                       | Great on critical analysis and policy advocacy; less technical focus on open model implementation or tooling. [Research report](https://ainowinstitute.org/publications/research/ai-now-2025-landscape-report) |
