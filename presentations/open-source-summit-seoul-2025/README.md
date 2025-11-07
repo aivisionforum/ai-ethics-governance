@@ -2,8 +2,10 @@
 
 ## Conference Information
 
-**Conference:** Linux FOundation Open Source Summit
+**Conference:** Linux Foundation Open Source Summit
+
 **Location:** Seoul, South Korea
+
 **Dates:** November 4-5, 2025
 
 ## Presentation Details
