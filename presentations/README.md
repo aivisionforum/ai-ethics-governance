@@ -16,4 +16,4 @@ Each presentation directory contains:
 
 ## Presentations
 
-- [Open Source Summit Seoul 2024](./open-source-summit-seoul-2024/) - "The Open Source Imperative in AI" by Chris Xie and Jesse McCrosky
+- [Open Source Summit Seoul 2025](./open-source-summit-seoul-2025/) - "The Open Source Imperative in AI" by Chris Xie and Jesse McCrosky
