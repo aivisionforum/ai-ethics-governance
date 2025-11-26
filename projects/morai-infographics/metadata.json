@@ -1,0 +1,18 @@
+{
+  "name": "Responsible AI Infographic",
+  "description": "An interactive infographic showcasing the 8 core principles of Responsible AI: Fairness, Transparency, Accountability, Privacy, Robustness, Human-Centered, Sustainability, and Inclusiveness.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ],
+  "i18n": {
+    "en": {
+      "name": "Responsible AI Infographic",
+      "description": "An interactive infographic showcasing the 8 core principles of Responsible AI: Fairness, Transparency, Accountability, Privacy, Robustness, Human-Centered, Sustainability, and Inclusiveness."
+    },
+    "zh": {
+      "name": "负责任人工智能信息图",
+      "description": "一份互动信息图，展示负责任人工智能的8个核心原则：公平性、透明度、问责制、隐私、鲁棒性、以人为本、可持续性、包容性。"
+    }
+  }
+}

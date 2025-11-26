@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsible AI Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "marked": "https://aistudiocdn.com/marked@^17.0.0"
+  }
+}
+</script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen antialiased text-gray-800">
+    <script>
+      let preferredLang = localStorage.getItem('language');
+
+      if (!preferredLang) {
+        // If no language preference is stored, try to detect from browser
+        const browserLang = navigator.language.toLowerCase();
+        if (browserLang.startsWith('zh')) {
+          preferredLang = 'zh';
+        } else {
+          preferredLang = 'en'; // Default to English if browser language is not Chinese
+        }
+        localStorage.setItem('language', preferredLang); // Store the detected preference
+      }
+
+      document.documentElement.lang = preferredLang;
+    </script>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
+</html>
