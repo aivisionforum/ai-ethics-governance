@@ -1,4 +1,4 @@
-# Responsible AI Demo Tool
+# Responsible AI Demo Tool (Morai Infographics)
 
 ## Demo Link
 
